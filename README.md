@@ -5,13 +5,15 @@ latex-homework-template
 
 A LaTeX template for homework, which is developed based on [GitHub - jdavis/latex-homework-template](https://github.com/jdavis/latex-homework-template).
 
+支持中文输入，可切换中文模板。
+
 <br/>
 
 ## 1 Features
 
 Here are just a few features of this homework template.
 
-1. Title page.
+1. Title page (includes English version and Chinese version).
 2. Problem markers.
 3. Configurable problem numbers (see the last 3 problems for an example).
 4. Some examples of commonly used commands about basic writing, figures, mathematics, algorithms and codes.
@@ -21,7 +23,7 @@ Here are just a few features of this homework template.
 
 ## 2 Files
 
-- homework.cls: Latex class file of specific basic settings.
+- homework.cls: Latex class file of specific basic settings, including language setting.
 - example.tex: An example demo for showing how the template works.
 - references.bib: source data of citations and references.
 - example.pdf: An example demo for showing how the template works.
@@ -34,33 +36,70 @@ If you need references, please compile `references.bib` file first before compil
 
 <br/>
 
-## 3 Screenshots
+## 3 Configurations
 
-### 3.1 The Cover Page
+### 3.1 Language
+
+默认为英文模板，如需中文模板，请在 `homework.cls` 文件中取消第6行注释，如下方所示：
+
+```tex
+%
+% Choose template language
+% preserve line 5 or 6 and comment the other
+%
+% \def\hmwkLanguage{E}  	% English template, but also supports Chinese in document body
+\def\hmwkLanguage{C}  		% Chinese template, 取消本行注释，以使用中文模板（首页、页眉等）
+```
+
+### 3.2 Page Headers
+
+Use page headers in each page by default. If want to cancel them, please uncomment line 13 in `homework.cls`. For example:
+
+```tex
+%
+% Use Page Header or not
+%
+% \def\hmwkPageHeader{1}     	% use page header
+\def\hmwkPageHeader{0}        	% not use page header
+```
+
+<br/>
+
+## 4 Screenshots
+
+### 4.1 The Cover Page
 
 Includes course name, due dates and authors, allowing single or multiple authors.
 
 ![Cover page](/ReadMeImages/1.jpg)
 
-### 3.2 Homework Problems
+### 4.2 Chinese Cover Page
+
+默认为英文模板，如需如下所示的中文模板，参见3.1节。
+
+![Chinese Cover page](/ReadMeImages/1.1.jpg)
+
+
+
+### 4.3 Homework Problems
 
 Support automatically increasing problem counter and different types of problems. For example, solution, proof and multiple sub-problems.
 
 ![Example problems 1](/ReadMeImages/2.jpg)
 
-### 3.3 Basic writing
+### 4.4 Basic Writing
 
 It also allows to set specific problem id. Provided examples for citations, figures, item listing and tables.
 
 ![Example problems 2](/ReadMeImages/3.jpg)
 
-### 3.4 Mathematics Problems
+### 4.5 Mathematics Problems
 
 Provided examples for writing equations and formulas.
 
 ![Example problems 3](/ReadMeImages/4.jpg)
 
-### 3.5 Algorithm Related Problems
+### 4.6 Algorithm Related Problems
 
 Provided examples for algorithms, graph drawing and codes.
 

@@ -1,7 +1,23 @@
+%
+% Choose template language
+% preserve line 5 or 6 and comment the other
+%
+\def\hmwkLanguage{E}        % English template, but also supports Chinese in document body
+% \def\hmwkLanguage{C}      % Chinese template, 取消本行注释，以使用中文模板（首页、页眉等）
+
+
+%
+% Use Page Header or not
+%
+\def\hmwkPageHeader{1}          % use page header
+% \def\hmwkPageHeader{0}        % not use page header
+
+
+%
+% based on article class
+% 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{homework}[2021/10/04 v1.0 homework Template]
-
-% based on article class
 \LoadClass{article} 
 
 
@@ -23,6 +39,7 @@
 \usepackage{cite}
 \usepackage{graphicx}
 \usepackage{bm}
+\usepackage{ctex}
 
 
 %
@@ -45,11 +62,23 @@
 
 \linespread{1.1}
 
-\pagestyle{fancy}
-\lhead{\hmwkAuthorName}
-\chead{\hmwkClass: \hmwkTitle}
-\rhead{\firstxmark}
-\lfoot{\lastxmark}
+\if \hmwkPageHeader 1
+    \pagestyle{fancy}
+    \if\hmwkLanguage E
+        \lhead{\hmwkAuthorName}
+        \chead{\hmwkClass: \hmwkTitle}
+    \else
+        \lhead{\hmwkAuthorNameCN}
+        \chead{\hmwkClassCN: \hmwkTitleCN}
+    \fi
+    \if\hmwkLanguage E
+        \author{\hmwkAuthorName}
+    \else
+        \author{\hmwkAuthorNameCN}
+    \fi
+    \rhead{\firstxmark}
+    \lfoot{\lastxmark}
+\fi
 \cfoot{\thepage}
 
 \renewcommand\headrulewidth{0.4pt}
@@ -63,21 +92,36 @@
 %
 
 \newcommand{\enterProblemHeader}[1]{
-    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
-    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \if\hmwkLanguage E
+        \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+        \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \else
+        \nobreak\extramarks{}{问题 \arabic{#1} 在下一页继续\ldots}\nobreak{}
+        \nobreak\extramarks{问题 \arabic{#1} (接上页)}{问题 \arabic{#1} 在下一页继续\ldots}\nobreak{}
+    \fi
 }
 
 \newcommand{\exitProblemHeader}[1]{
-    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
-    \stepcounter{#1}
-    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+    \if\hmwkLanguage E
+        \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+        \stepcounter{#1}
+        \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+    \else
+        \nobreak\extramarks{问题 \arabic{#1} (接上页)}{问题 \arabic{#1} 在下一页继续\ldots}\nobreak{}
+        \stepcounter{#1}
+        \nobreak\extramarks{问题 \arabic{#1}}{}\nobreak{}
+    \fi
 }
 
 \setcounter{secnumdepth}{0}
 \newcounter{partCounter}
 \newcounter{homeworkProblemCounter}
 \setcounter{homeworkProblemCounter}{1}
-\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+\if\hmwkLanguage E
+    \nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+\else
+    \nobreak\extramarks{问题 \arabic{homeworkProblemCounter}}{}\nobreak{}
+\fi
 
 %
 % Homework Problem Environment
@@ -92,7 +136,11 @@
         \setcounter{homeworkProblemCounter}{#1}
     \fi
     \vspace{0.2in}
-    \section{Problem \arabic{homeworkProblemCounter}}
+    \if\hmwkLanguage E
+        \section{Problem \arabic{homeworkProblemCounter}}
+    \else
+        \section{问题 \arabic{homeworkProblemCounter}}
+    \fi
     \setcounter{partCounter}{1}
     \enterProblemHeader{homeworkProblemCounter}
 }{
@@ -105,11 +153,19 @@
     
     \ifnum#1>0
         \vspace{0.2in}
-        \textbf{\large Solution of (#1)}
+        \if\hmwkLanguage E
+            \textbf{\large Solution of (#1)}
+        \else
+            \textbf{\large 解答 (#1)}
+        \fi
         \vspace{0.1in}
     \else
         \vspace{0.2in}
-        \textbf{\large Solution}
+        \if\hmwkLanguage E
+            \textbf{\large Solution}
+        \else
+            \textbf{\large 解答}
+        \fi
         \vspace{0.1in}
     \fi
     
@@ -122,15 +178,27 @@
 
 \title{
     \vspace{3in}
-    \huge{\textbf{\hmwkClass}}\\
-    \vspace{0.4in}
-    \huge{\textbf{\hmwkTitle}}\\
-    \vspace{0.4in}
-    \normalsize{Due\ on\ \hmwkDueDate}\\
+    \if\hmwkLanguage E
+        \huge{\textbf{\hmwkClass}}\\
+        \vspace{0.4in}
+        \huge{\textbf{\hmwkTitle}}\\
+        \vspace{0.4in}
+        \normalsize{Due on \hmwkDueDate}\\
+    \else
+        \Huge{\textbf{\hmwkClassCN}}\\
+        \vspace{0.3in}
+        \Huge{\textbf{\hmwkTitleCN}}\\
+        \vspace{0.4in}
+        \normalsize{截止日期：\hmwkDueDateCN}\\
+    \fi
     \vspace{2.4in}
 }
 
-\author{\hmwkAuthorName}
+\if\hmwkLanguage E
+    \author{\hmwkAuthorName}
+\else
+    \author{\hmwkAuthorNameCN}
+\fi
 \date{}
 
 

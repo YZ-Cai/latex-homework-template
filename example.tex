@@ -1,4 +1,4 @@
-\documentclass{homework}
+\documentclass[UTF8]{homework}
 
 
 %
@@ -14,9 +14,20 @@
 \newcommand{\hmwkAuthorName}{Author 1 \and Author 2 \and Author 3}
 
 
-\begin{document}
+%
+% 中文版 - 基础信息 (仅在homework.cls第6行未被注释时启用)
+%   - 标题
+%   - 截止日期
+%   - 课程
+%   - 作者
+%
+\newcommand{\hmwkTitleCN}{作业\#1}
+\newcommand{\hmwkDueDateCN}{2021年10月4日}
+\newcommand{\hmwkClassCN}{课程名称}
+\newcommand{\hmwkAuthorNameCN}{作者 1 \and 作者 2 \and 作者 3}
 
-% title page
+
+\begin{document}
 \maketitle
 \pagebreak
 
@@ -32,7 +43,9 @@
     For example, Problem 1 to 3 are sequential, and the following problem is Problem 10 by using \verb|\begin{homeworkProblem}[10]|.\\
     
     Here you can write the description of a problem.
-    Then you can use \verb|\solution| to start your solution.
+    Then you can use \verb|\solution| to start your solution.\\
+
+    正文支持中文，若首页、页眉等需要中文模板，请前往“homework.cls”文件，取消第6行的注释，并注释掉第5行。
     
     \solution
 
