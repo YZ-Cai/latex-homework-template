@@ -196,19 +196,16 @@ s
     Try inline formula $x^2+y^2=1$. \\
     
     Try single line formula with auto id \ref{eq1}:
-
     \begin{equation}\label{eq1}
         \int_0^1f(t)dt = \iint_Dg(x,y)dxdy.
     \end{equation}
 
     Try single line formula without auto id:
-
     \begin{equation*}
         n^2 - \dfrac{c}{n} + 1 \leq n^2
     \end{equation*}
 
     Try multiple lines formula with auto id \ref{eq2}:
-
     \begin{equation}\label{eq2}
         \begin{split}
             n^2 + n + 1 &\leq n^2 + n^2 + n^2 \\
@@ -217,14 +214,26 @@ s
         \end{split}
     \end{equation}
 
-    Try multiple lines formula without auto id:
+    or
+    \begin{align}
+        n^2 + n + 1 &\leq n^2 + n^2 + n^2 \\
+        &= 3n^2 \\
+        &\leq c \cdot 2n^3
+    \end{align}
 
+    Try multiple lines formula without auto id:
     \begin{equation*}
         \begin{cases}
             \frac{dS}{dt} = \Lambda - \beta SI - \mu S -\mu_1 mZS + \delta_0R, \\
             \frac{dI}{dt} = \beta SI - (\mu+\delta+\gamma)I.
         \end{cases}
     \end{equation*}
+
+    Try bold text in equations:
+    \begin{align*}
+        \min_{\bm{x}} \; \bm{x}^T A \bm{x} \\
+        s.t. \; \bm{c}^T \bm{x} = 0
+    \end{align*}
     
 \end{homeworkProblem}
 

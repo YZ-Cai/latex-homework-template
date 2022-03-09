@@ -22,6 +22,7 @@
 \usepackage{xcolor}
 \usepackage{cite}
 \usepackage{graphicx}
+\usepackage{bm}
 
 
 %
